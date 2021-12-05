@@ -1,2 +1,11 @@
 #Directory Ignore
 AWS/
+Servers/
+.metadata/
+*/target
+*/.settings
+
+*/.classpath
+*/.project
+*/.springBeans
+*/pom.xml
