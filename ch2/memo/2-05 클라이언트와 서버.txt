@@ -1,0 +1,60 @@
+2-05 클라이언트와 서버
+
+# 1. HttpServletRequest의 메서드
+	
+	예시) http://52.78.79.190:8080/ch2/requestInfo?year=2021&month=10&day=1
+	
+	getScheme() 		: http
+	getSErverName()		: 52.78.79.190
+	getServerPort()		: 8080
+	getContextPath()	: ch2			: 프로젝트
+	getServletPath()	: requestInfo
+	getQueryString()	: year=2021&month=10&day=1
+	
+	getRequestURI()		: /ch2/requestInfo
+	getRequestURL()		: http://52.78.79.190:8080/ch2/requestInfo
+	
+	2. getQueryString
+	
+	예시) ?year=2021&month=10&day=1
+	
+	request.getParameter(Name) 을 통해 name에 해당하는 value 값을 가져온다.
+	위의 예시에서 name은 year, month, day이며 value값은 year->2021, month->10, day->1 로 받아올 수 있다.
+	
+	String year = request.getParameter("year");		//year = 2021
+	String month = request.getParameter("month");	//month = 10
+	String day = request.getParameter("day");		//day = 1
+	
+	Enumeration enum = request.getParameterNames();	//파라미터의 name값들을 받아온다.
+	Map paramMap = request.getParameterMap();		//Map<> 형식으로 name과 value를 받아온다.
+	
+	
+	예시) ?year=2021&year=2022&year=2023
+	
+	name의 값들이 같을 경우 request.getParameterValues(Name) 을 통해 Name에 해당하는 값들을 배열로 받아올 수 있다.
+	
+	String[] yearArr = request.getParameterValues("year");
+	
+# 2. 클라이언트와 서버
+	
+	클라이언트 - 서비스를 요청하는 애플리케이션
+	서버		- 서비스를 제공하는 애플리케이션
+	
+# 3. WAS - WebServer
+
+	WAS 		: 웹서버와 웹컨테이너가 합쳐진 형태로, 웹서버 단독으로 처리할 수 없는 데이터베이스의 조회나 다양한 로직 처리가 필요한 동적 컨텐츠를 제공하는 서버
+	Web Server	: 단순 HTML문서, CSS, javaScript, 이미지, 파일 등 즉시 응답가능한 컨텐츠인 정적 컨텐츠를 제공하는 서버
+
+# 4. Tomcat의 내부구조
+	
+	구조) Server [ Service [ connector[ HTTP1.1, HTTP2, AJP ], Engine [ Host [ Context(/ch2) [ Servlet ] ] ] ] ]
+	
+	Host 	: URL (www.fastcampus.co.kr)
+	Context : 프로젝트 (ch2)
+	
+# 5. 요청부터 응답까지 과정	
+
+	Thread 생성 (Task Thread) -> Thread에 요청 탑재 (ThreadPool) -> Connector 선택 (HTTP11Processor) ->
+	Engine -> Host -> Context -> 서블릿전처리 (ApplicationFilter) -> Controller -> 메서드 호출
+	
+	Http11Processor에서 HttpRequest와 HttpResponse를 생성하여 Controller까지 전달한다.

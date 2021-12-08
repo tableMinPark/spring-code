@@ -1,0 +1,38 @@
+2-08 텍스트와 바이너리, MIME, Base64
+
+# 1. 텍스트 파일 vs 바이너리 파일
+
+	바이너리 파일 	: 문자와 숫자가 저장되어 있는 파일	(이미지파일)
+	텍스트 파일	: 문자만 저장되어 있는 파일		(텍스트파일)
+	
+# 2. MIME(Multipurpose Internet Mail Extensions)
+
+	텍스트 기반 프로토콜에 바이너리 데이터를 전송하기 위해 고안
+	HTTP의 Content-Type헤더에 사용되고 데이터 타입을 명시
+	
+	이미지전송 요청 예시)
+	
+	POST /ch2/getYoil HTTP/1.1
+	Host: localhost
+	Cache-Control: no-cache
+	
+	----WebKitFormBoundaryE19zNvXGzXaLvS5C										: boundary 경계
+	Content-Disposition: form-data; name="year"									: 텍스트 데이터
+	
+	2021
+	----WebKitFormBoundaryE19zNvXGzXaLvS5C										: boundary 경계
+	Content-Disposition: form-data; name="imgFile"; filename="testImage.png"	: 바이너리 데이터
+	Content-Type: image/png
+	
+	
+	----WebKitFormBoundaryE19zNvXGzXaLvS5C
+
+# 3. Base64
+	
+	바이너리 데이터를 텍스트 데이터로 변환할 때 사용한다.
+	A~Z, a~z, 0~9, +, / : 총 64개로 구성되어 있다.
+	
+	2진법		: base2
+	10진법	: base10
+	16진법	: base16
+	64진법	: base64
