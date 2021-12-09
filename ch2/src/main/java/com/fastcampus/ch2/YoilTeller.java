@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class YoilTeller {	//http://localhost:8080/ch2/getYoil?year=2021&month=12&day=4
 	@RequestMapping("/getYoil")
 	public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
 		// 1. 입력
 		String year = request.getParameter("year");
 		String month = request.getParameter("month");
@@ -25,8 +26,7 @@ public class YoilTeller {	//http://localhost:8080/ch2/getYoil?year=2021&month=12
 		int mm = Integer.parseInt(month);
 		int dd = Integer.parseInt(day);
 		
-		// 2. 작업
-		
+		// 2. 처리		
 		Calendar cal = Calendar.getInstance();
 		cal.set(yyyy, mm - 1, dd);
 		
@@ -37,8 +37,14 @@ public class YoilTeller {	//http://localhost:8080/ch2/getYoil?year=2021&month=12
 		response.setContentType("text/html");	//출력 형식지정
 		response.setCharacterEncoding("utf-8");	//출력 인코딩 지정
 		PrintWriter out = response.getWriter();	//response객체에서 브라우저로의 출력 스트림을 얻는다.
+		out.println("<html>");
+		out.println("<head>");
+		out.println("</head>");
+		out.println("<body>");
 		out.println(year + "년 " + month + "월 " + day + "일은 ");
 		out.println(yoil + "요일 입니다.");
+		out.println("</body>");
+		out.println("</html>");
 	}
 
 }

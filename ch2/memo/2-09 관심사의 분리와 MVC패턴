@@ -1,0 +1,62 @@
+2-09 관심사의 분리와 MVC패턴
+
+# 1. 관심사란?
+	
+	관심사는 해야할 작업을 의미한다. 
+	
+	관심사 예시)
+	public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		// 1. 입력
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
+		String day = request.getParameter("day");		
+		int yyyy = Integer.parseInt(year);
+		int mm = Integer.parseInt(month);
+		int dd = Integer.parseInt(day);
+		
+		// 2. 처리		
+		Calendar cal = Calendar.getInstance();
+		cal.set(yyyy, mm - 1, dd);		
+		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK); // 1:일요일 2:월요일 ...
+		char yoil = " 일월화수목금토".charAt(dayOfWeek);
+		
+		// 3. 출력
+		response.setContentType("text/html");	//출력 형식지정
+		response.setCharacterEncoding("utf-8");	//출력 인코딩 지정
+		PrintWriter out = response.getWriter();	//response객체에서 브라우저로의 출력 스트림을 얻는다.
+		out.println(year + "년 " + month + "월 " + day + "일은 ");
+		out.println(yoil + "요일 입니다.");
+	}
+	
+	위의 YoilTeller 의 main은 3개의 관심사를 가지고 있다.
+	1. 요일을 입력받는 작업
+	2. 요일을 계산하는 작업
+	3. 계산된 요일을 출력하는 작업
+	
+# 2. 분리
+	
+	1. 관심사의 분리	
+	2. 자주변하는 코드, 자주 변하지 않는 코드의 분리 (common, uncommon)	
+	3. 공통코드(중복코드)의 분리
+	
+# 3. MVC패턴
+
+	Controller	: 처리
+	Model 		: 처리에서 나온 값들을 저장하는 객체 (출력으로 전달될 객체)
+	View		: 출력
+	
+# 4. View 경로
+
+	src/main/webapp/resources/WEB-INF/spring/appServlet/servlet-context.html
+	
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />		//접두사
+		<beans:property name="suffix" value=".jsp" />					//접미사 ex) /WEB-INF/views/(JSP Filename).jsp
+	</beans:bean>
+	
+# 5. 컨트롤러 메서드의 반환타입
+
+	1. [String] 뷰 이름을 반환				: 뷰 이름을 반환하여 View 파일을 지정
+	2. [void] 매핑된 url의 끝단어가 뷰 이름	: 아무것도 반환하지 않아 url의 끝단어와 동일한 View 파일을 자동 지정
+	3. [ModelAndView] Model과 뷰 이름을 반환: 처리된 값들을 저장하고 View를 지정해서 값과 View를 한번에 반환
