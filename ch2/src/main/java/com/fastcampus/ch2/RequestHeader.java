@@ -22,7 +22,6 @@ public class RequestHeader {
 }
 
 /*
-[실행결과]
 host:localhost:8080
 connection:keep-alive
 sec-ch-ua:"Chromium";v="94", "Google Chrome";v="94", ";Not A Brand";v="99"

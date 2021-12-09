@@ -3,24 +3,24 @@ package com.fastcampus.ch2;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//1. ¿ø°Ý È£Ãâ°¡´ÉÇÑ ÇÁ·Î±×·¥À¸·Î µî·Ï (@Controller)
+//1. ì›ê²© í˜¸ì¶œê°€ëŠ¥í•œ í”„ë¡œê·¸ëž¨ìœ¼ë¡œ ë“±ë¡ (@Controller)
 @Controller
 public class Hello {
-	int iv = 10;			//ÀÎ½ºÅÏ½º º¯¼ö
-	static int cv = 20;		//static º¯¼ö
+	int iv = 10;			//ì¸ìŠ¤í„´ìŠ¤ ë³€ìˆ˜
+	static int cv = 20;		//static ë³€ìˆ˜
 	
-	//2. URL°ú ¸Þ¼­µå¸¦ ¿¬°á (@RequestMapping)
+	//2. URLê³¼ ë©”ì„œë“œë¥¼ ì—°ê²° (@RequestMapping)
 	
 	@RequestMapping("/hello")		
-	public void main() {	//ÀÎ½ºÅÏ½º ¸Þ¼­µå - iv, cv µÑ´Ù »ç¿ë°¡´É
-		//Tomcat console¿¡ Ãâ·ÂÇß±â ¶§¹®¿¡ Error 404
+	public void main() {	//ì¸ìŠ¤í„´ìŠ¤ ë©”ì„œë“œ - iv, cv ë‘˜ë‹¤ ì‚¬ìš©ê°€ëŠ¥
+		//Tomcat consoleì— ì¶œë ¥í–ˆê¸° ë•Œë¬¸ì— Error 404
 		System.out.println("Hello");
 		System.out.println(cv);		//OK
 		System.out.println(iv);		//OK
 	}	
 	
 	@RequestMapping("/hello2")
-	public static void main2() {	//static ¸Þ¼­µå - cv¸¸ »ç¿ë°¡´É
+	public static void main2() {	//static ë©”ì„œë“œ - cvë§Œ ì‚¬ìš©ê°€ëŠ¥
 		System.out.println("Hello (static)");
 		System.out.println(cv);		//OK
 //		System.out.println(iv);	//ERROR
@@ -31,6 +31,3 @@ public class Hello {
 		System.out.println("Hello (private)");
 	}
 }
-
-
-//staticÀ» ¾²Áö¾Ê¾Æµµ È£ÃâµÇ´ÂÀÌÀ¯ > Tomcat³»ºÎ¿¡¼­ °´Ã¼¸¦ »ý¼ºÇÏ°í ¸Þ¼­µå¸¦ È£ÃâÇÏ±â ¶§¹®

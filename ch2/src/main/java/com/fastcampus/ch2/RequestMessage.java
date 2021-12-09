@@ -13,7 +13,7 @@ public class RequestMessage {
 	public void main(HttpServletRequest request) throws Exception {
 		
 		// 1. request line
-		String requestLine = request.getMethod();       // GET ¶Ç´Â POST
+		String requestLine = request.getMethod();       // GET ë˜ëŠ” POST
 		requestLine += " " + request.getRequestURI();   // /ch2/requestMessage
 		
 		String queryString = request.getQueryString();  // year=2021&month=10&day=1
@@ -30,7 +30,7 @@ public class RequestMessage {
 			System.out.println(name + ":" + request.getHeader(name));
 		}
 		
-		// 3. request body - POSTÀÏ ¶§¸¸ ÇØ´ç, GETÀº body°¡ ¾øÀ½(CONTENT_LENGTH=0)
+		// 3. request body - POSTì¼ ë•Œë§Œ í•´ë‹¹, GETì€ bodyê°€ ì—†ìŒ(CONTENT_LENGTH=0)
 		final int CONTENT_LENGTH = request.getContentLength();
 //		System.out.println("content length="+CONTENT_LENGTH);
 		
@@ -47,8 +47,8 @@ public class RequestMessage {
 }
 
 /*
-[½ÇÇà°á°ú1] - GET ¿äÃ»
-GET /ch2/requestMessage?year=2021&month=10&day=1 HTTP/1.1  <--- ¿äÃ» ¶óÀÎ(request line)
+[ì‹¤í–‰ê²°ê³¼1] - GET ìš”ì²­
+GET /ch2/requestMessage?year=2021&month=10&day=1 HTTP/1.1  <--- ìš”ì²­ ë¼ì¸(request line)
 host:localhost:8080
 connection:keep-alive
 sec-ch-ua:"Chromium";v="94", "Google Chrome";v="94", ";Not A Brand";v="99"
@@ -63,9 +63,8 @@ sec-fetch-user:?1
 sec-fetch-dest:document
 accept-encoding:gzip, deflate, br
 accept-language:ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
-
-[½ÇÇà°á°ú2] - POST ¿äÃ»
-POST /ch2/requestMessage HTTP/1.1  <--- ¿äÃ» ¶óÀÎ(request line)
+[ì‹¤í–‰ê²°ê³¼2] - POST ìš”ì²­
+POST /ch2/requestMessage HTTP/1.1  <--- ìš”ì²­ ë¼ì¸(request line)
 host:localhost:8080
 connection:keep-alive
 content-length:90

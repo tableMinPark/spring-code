@@ -27,7 +27,7 @@ public class TwoDice {
 		out.println("</body>");
 		out.println("</html>");
 		
-		//À§ÀÇ ÄÚµå¿Í °°ÀÌ ½ÇÇà½Ã ¸¶´Ù °á°ú°¡ º¯ÇÔ 	- µ¿Àû¸®¼Ò½º (ÇÁ·Î±×·¥, ½ºÆ®¸®¹Ö)
-		//ÀÌ¹ÌÁö¿Í °°ÀÌ °á°ú°¡ °°Àº °ª 			- Á¤Àû¸®¼Ò½º (css, html)
+		//ìœ„ì˜ ì½”ë“œì™€ ê°™ì´ ì‹¤í–‰ì‹œ ë§ˆë‹¤ ê²°ê³¼ê°€ ë³€í•¨ 	- ë™ì ë¦¬ì†ŒìŠ¤ (í”„ë¡œê·¸ëž¨, ìŠ¤íŠ¸ë¦¬ë°)
+		//ì´ë¯¸ì§€ì™€ ê°™ì´ ê²°ê³¼ê°€ ê°™ì€ ê°’ 			- ì •ì ë¦¬ì†ŒìŠ¤ (css, html)
 	}
 }

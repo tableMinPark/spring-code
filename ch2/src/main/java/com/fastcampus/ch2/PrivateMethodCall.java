@@ -5,16 +5,16 @@ import java.lang.reflect.Method;
 public class PrivateMethodCall {
 	public static void main(String[] args) throws Exception {
 //		Hello hello = new Hello();
-//		hello.main3();	//private ¶ó¼­ ¿ÜºÎ È£Ãâ ºÒ°¡
+//		hello.main3();	//private ë¼ì„œ ì™¸ë¶€ í˜¸ì¶œ ë¶ˆê°€
 		
-		//Reflection API¸¦ »ç¿ë - Å¬·¡½º Á¤º¸¸¦ ¾ò°í ´Ù·ê ¼ö ÀÖ´Â °­·ÂÇÑ ±â´ÉÁ¦°ø
-		//java.lang.reflect ÆĞÅ°Áö¸¦ Á¦°ø
+		//Reflection APIë¥¼ ì‚¬ìš© - í´ë˜ìŠ¤ ì •ë³´ë¥¼ ì–»ê³  ë‹¤ë£° ìˆ˜ ìˆëŠ” ê°•ë ¥í•œ ê¸°ëŠ¥ì œê³µ
+		//java.lang.reflect íŒ¨í‚¤ì§€ë¥¼ ì œê³µ
 		
-		//HelloÅ¬·¡½ºÀÇ Class°´Ã¼ (Å¬·¡½ºÀÇ Á¤º¸¸¦ ´ã°í ÀÖ´Â °´Ã¼)¸¦ ¾ò¾î¿Â´Ù.
+		//Helloí´ë˜ìŠ¤ì˜ Classê°ì²´ (í´ë˜ìŠ¤ì˜ ì •ë³´ë¥¼ ë‹´ê³  ìˆëŠ” ê°ì²´)ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 		Class helloClass = Class.forName("com.fastcampus.ch2.Hello");
 		Hello hello = (Hello)helloClass.newInstance();
 		Method main = helloClass.getDeclaredMethod("main3");
-		main.setAccessible(true);	//privateÀÎ main()À» È£Ãâ°¡´ÉÇÏ°Ô ÇÑ´Ù.
+		main.setAccessible(true);	//privateì¸ main()ì„ í˜¸ì¶œê°€ëŠ¥í•˜ê²Œ í•œë‹¤.
 		
 		main.invoke(hello);
 	}
