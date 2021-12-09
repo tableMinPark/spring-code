@@ -1,13 +1,13 @@
-2-05 Å¬¶óÀÌ¾ğÆ®¿Í ¼­¹ö
+2-05 í´ë¼ì´ì–¸íŠ¸ì™€ ì„œë²„
 
-# 1. HttpServletRequestÀÇ ¸Ş¼­µå
+# 1. HttpServletRequestì˜ ë©”ì„œë“œ
 	
-	¿¹½Ã) http://52.78.79.190:8080/ch2/requestInfo?year=2021&month=10&day=1
+	ì˜ˆì‹œ) http://52.78.79.190:8080/ch2/requestInfo?year=2021&month=10&day=1
 	
 	getScheme() 		: http
 	getSErverName()		: 52.78.79.190
 	getServerPort()		: 8080
-	getContextPath()	: ch2			: ÇÁ·ÎÁ§Æ®
+	getContextPath()	: ch2			: í”„ë¡œì íŠ¸
 	getServletPath()	: requestInfo
 	getQueryString()	: year=2021&month=10&day=1
 	
@@ -16,45 +16,45 @@
 	
 	2. getQueryString
 	
-	¿¹½Ã) ?year=2021&month=10&day=1
+	ì˜ˆì‹œ) ?year=2021&month=10&day=1
 	
-	request.getParameter(Name) À» ÅëÇØ name¿¡ ÇØ´çÇÏ´Â value °ªÀ» °¡Á®¿Â´Ù.
-	À§ÀÇ ¿¹½Ã¿¡¼­ nameÀº year, month, dayÀÌ¸ç value°ªÀº year->2021, month->10, day->1 ·Î ¹Ş¾Æ¿Ã ¼ö ÀÖ´Ù.
+	request.getParameter(Name) ì„ í†µí•´ nameì— í•´ë‹¹í•˜ëŠ” value ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
+	ìœ„ì˜ ì˜ˆì‹œì—ì„œ nameì€ year, month, dayì´ë©° valueê°’ì€ year->2021, month->10, day->1 ë¡œ ë°›ì•„ì˜¬ ìˆ˜ ìˆë‹¤.
 	
 	String year = request.getParameter("year");		//year = 2021
 	String month = request.getParameter("month");	//month = 10
 	String day = request.getParameter("day");		//day = 1
 	
-	Enumeration enum = request.getParameterNames();	//ÆÄ¶ó¹ÌÅÍÀÇ name°ªµéÀ» ¹Ş¾Æ¿Â´Ù.
-	Map paramMap = request.getParameterMap();		//Map<> Çü½ÄÀ¸·Î name°ú value¸¦ ¹Ş¾Æ¿Â´Ù.
+	Enumeration enum = request.getParameterNames();	//íŒŒë¼ë¯¸í„°ì˜ nameê°’ë“¤ì„ ë°›ì•„ì˜¨ë‹¤.
+	Map paramMap = request.getParameterMap();		//Map<> í˜•ì‹ìœ¼ë¡œ nameê³¼ valueë¥¼ ë°›ì•„ì˜¨ë‹¤.
 	
 	
-	¿¹½Ã) ?year=2021&year=2022&year=2023
+	ì˜ˆì‹œ) ?year=2021&year=2022&year=2023
 	
-	nameÀÇ °ªµéÀÌ °°À» °æ¿ì request.getParameterValues(Name) À» ÅëÇØ Name¿¡ ÇØ´çÇÏ´Â °ªµéÀ» ¹è¿­·Î ¹Ş¾Æ¿Ã ¼ö ÀÖ´Ù.
+	nameì˜ ê°’ë“¤ì´ ê°™ì„ ê²½ìš° request.getParameterValues(Name) ì„ í†µí•´ Nameì— í•´ë‹¹í•˜ëŠ” ê°’ë“¤ì„ ë°°ì—´ë¡œ ë°›ì•„ì˜¬ ìˆ˜ ìˆë‹¤.
 	
 	String[] yearArr = request.getParameterValues("year");
 	
-# 2. Å¬¶óÀÌ¾ğÆ®¿Í ¼­¹ö
+# 2. í´ë¼ì´ì–¸íŠ¸ì™€ ì„œë²„
 	
-	Å¬¶óÀÌ¾ğÆ® - ¼­ºñ½º¸¦ ¿äÃ»ÇÏ´Â ¾ÖÇÃ¸®ÄÉÀÌ¼Ç
-	¼­¹ö		- ¼­ºñ½º¸¦ Á¦°øÇÏ´Â ¾ÖÇÃ¸®ÄÉÀÌ¼Ç
+	í´ë¼ì´ì–¸íŠ¸ - ì„œë¹„ìŠ¤ë¥¼ ìš”ì²­í•˜ëŠ” ì• í”Œë¦¬ì¼€ì´ì…˜
+	ì„œë²„		- ì„œë¹„ìŠ¤ë¥¼ ì œê³µí•˜ëŠ” ì• í”Œë¦¬ì¼€ì´ì…˜
 	
 # 3. WAS - WebServer
 
-	WAS 		: À¥¼­¹ö¿Í À¥ÄÁÅ×ÀÌ³Ê°¡ ÇÕÃÄÁø ÇüÅÂ·Î, À¥¼­¹ö ´Üµ¶À¸·Î Ã³¸®ÇÒ ¼ö ¾ø´Â µ¥ÀÌÅÍº£ÀÌ½ºÀÇ Á¶È¸³ª ´Ù¾çÇÑ ·ÎÁ÷ Ã³¸®°¡ ÇÊ¿äÇÑ µ¿Àû ÄÁÅÙÃ÷¸¦ Á¦°øÇÏ´Â ¼­¹ö
-	Web Server	: ´Ü¼ø HTML¹®¼­, CSS, javaScript, ÀÌ¹ÌÁö, ÆÄÀÏ µî Áï½Ã ÀÀ´ä°¡´ÉÇÑ ÄÁÅÙÃ÷ÀÎ Á¤Àû ÄÁÅÙÃ÷¸¦ Á¦°øÇÏ´Â ¼­¹ö
+	WAS 		: ì›¹ì„œë²„ì™€ ì›¹ì»¨í…Œì´ë„ˆê°€ í•©ì³ì§„ í˜•íƒœë¡œ, ì›¹ì„œë²„ ë‹¨ë…ìœ¼ë¡œ ì²˜ë¦¬í•  ìˆ˜ ì—†ëŠ” ë°ì´í„°ë² ì´ìŠ¤ì˜ ì¡°íšŒë‚˜ ë‹¤ì–‘í•œ ë¡œì§ ì²˜ë¦¬ê°€ í•„ìš”í•œ ë™ì  ì»¨í…ì¸ ë¥¼ ì œê³µí•˜ëŠ” ì„œë²„
+	Web Server	: ë‹¨ìˆœ HTMLë¬¸ì„œ, CSS, javaScript, ì´ë¯¸ì§€, íŒŒì¼ ë“± ì¦‰ì‹œ ì‘ë‹µê°€ëŠ¥í•œ ì»¨í…ì¸ ì¸ ì •ì  ì»¨í…ì¸ ë¥¼ ì œê³µí•˜ëŠ” ì„œë²„
 
-# 4. TomcatÀÇ ³»ºÎ±¸Á¶
+# 4. Tomcatì˜ ë‚´ë¶€êµ¬ì¡°
 	
-	±¸Á¶) Server [ Service [ connector[ HTTP1.1, HTTP2, AJP ], Engine [ Host [ Context(/ch2) [ Servlet ] ] ] ] ]
+	êµ¬ì¡°) Server [ Service [ connector[ HTTP1.1, HTTP2, AJP ], Engine [ Host [ Context(/ch2) [ Servlet ] ] ] ] ]
 	
 	Host 	: URL (www.fastcampus.co.kr)
-	Context : ÇÁ·ÎÁ§Æ® (ch2)
+	Context : í”„ë¡œì íŠ¸ (ch2)
 	
-# 5. ¿äÃ»ºÎÅÍ ÀÀ´ä±îÁö °úÁ¤	
+# 5. ìš”ì²­ë¶€í„° ì‘ë‹µê¹Œì§€ ê³¼ì •	
 
-	Thread »ı¼º (Task Thread) -> Thread¿¡ ¿äÃ» Å¾Àç (ThreadPool) -> Connector ¼±ÅÃ (HTTP11Processor) ->
-	Engine -> Host -> Context -> ¼­ºí¸´ÀüÃ³¸® (ApplicationFilter) -> Controller -> ¸Ş¼­µå È£Ãâ
+	Thread ìƒì„± (Task Thread) -> Threadì— ìš”ì²­ íƒ‘ì¬ (ThreadPool) -> Connector ì„ íƒ (HTTP11Processor) ->
+	Engine -> Host -> Context -> ì„œë¸”ë¦¿ì „ì²˜ë¦¬ (ApplicationFilter) -> Controller -> ë©”ì„œë“œ í˜¸ì¶œ
 	
-	Http11Processor¿¡¼­ HttpRequest¿Í HttpResponse¸¦ »ı¼ºÇÏ¿© Controller±îÁö Àü´ŞÇÑ´Ù.
+	Http11Processorì—ì„œ HttpRequestì™€ HttpResponseë¥¼ ìƒì„±í•˜ì—¬ Controllerê¹Œì§€ ì „ë‹¬í•œë‹¤.

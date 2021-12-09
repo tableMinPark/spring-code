@@ -1,27 +1,27 @@
-2-08 ÅØ½ºÆ®¿Í ¹ÙÀÌ³Ê¸®, MIME, Base64
+2-08 í…ìŠ¤íŠ¸ì™€ ë°”ì´ë„ˆë¦¬, MIME, Base64
 
-# 1. ÅØ½ºÆ® ÆÄÀÏ vs ¹ÙÀÌ³Ê¸® ÆÄÀÏ
+# 1. í…ìŠ¤íŠ¸ íŒŒì¼ vs ë°”ì´ë„ˆë¦¬ íŒŒì¼
 
-	¹ÙÀÌ³Ê¸® ÆÄÀÏ 	: ¹®ÀÚ¿Í ¼ıÀÚ°¡ ÀúÀåµÇ¾î ÀÖ´Â ÆÄÀÏ	(ÀÌ¹ÌÁöÆÄÀÏ)
-	ÅØ½ºÆ® ÆÄÀÏ	: ¹®ÀÚ¸¸ ÀúÀåµÇ¾î ÀÖ´Â ÆÄÀÏ		(ÅØ½ºÆ®ÆÄÀÏ)
+	ë°”ì´ë„ˆë¦¬ íŒŒì¼ 	: ë¬¸ìì™€ ìˆ«ìê°€ ì €ì¥ë˜ì–´ ìˆëŠ” íŒŒì¼	(ì´ë¯¸ì§€íŒŒì¼)
+	í…ìŠ¤íŠ¸ íŒŒì¼	: ë¬¸ìë§Œ ì €ì¥ë˜ì–´ ìˆëŠ” íŒŒì¼		(í…ìŠ¤íŠ¸íŒŒì¼)
 	
 # 2. MIME(Multipurpose Internet Mail Extensions)
 
-	ÅØ½ºÆ® ±â¹İ ÇÁ·ÎÅäÄİ¿¡ ¹ÙÀÌ³Ê¸® µ¥ÀÌÅÍ¸¦ Àü¼ÛÇÏ±â À§ÇØ °í¾È
-	HTTPÀÇ Content-TypeÇì´õ¿¡ »ç¿ëµÇ°í µ¥ÀÌÅÍ Å¸ÀÔÀ» ¸í½Ã
+	í…ìŠ¤íŠ¸ ê¸°ë°˜ í”„ë¡œí† ì½œì— ë°”ì´ë„ˆë¦¬ ë°ì´í„°ë¥¼ ì „ì†¡í•˜ê¸° ìœ„í•´ ê³ ì•ˆ
+	HTTPì˜ Content-Typeí—¤ë”ì— ì‚¬ìš©ë˜ê³  ë°ì´í„° íƒ€ì…ì„ ëª…ì‹œ
 	
-	ÀÌ¹ÌÁöÀü¼Û ¿äÃ» ¿¹½Ã)
+	ì´ë¯¸ì§€ì „ì†¡ ìš”ì²­ ì˜ˆì‹œ)
 	
 	POST /ch2/getYoil HTTP/1.1
 	Host: localhost
 	Cache-Control: no-cache
 	
-	----WebKitFormBoundaryE19zNvXGzXaLvS5C										: boundary °æ°è
-	Content-Disposition: form-data; name="year"									: ÅØ½ºÆ® µ¥ÀÌÅÍ
+	----WebKitFormBoundaryE19zNvXGzXaLvS5C										: boundary ê²½ê³„
+	Content-Disposition: form-data; name="year"									: í…ìŠ¤íŠ¸ ë°ì´í„°
 	
 	2021
-	----WebKitFormBoundaryE19zNvXGzXaLvS5C										: boundary °æ°è
-	Content-Disposition: form-data; name="imgFile"; filename="testImage.png"	: ¹ÙÀÌ³Ê¸® µ¥ÀÌÅÍ
+	----WebKitFormBoundaryE19zNvXGzXaLvS5C										: boundary ê²½ê³„
+	Content-Disposition: form-data; name="imgFile"; filename="testImage.png"	: ë°”ì´ë„ˆë¦¬ ë°ì´í„°
 	Content-Type: image/png
 	
 	
@@ -29,10 +29,10 @@
 
 # 3. Base64
 	
-	¹ÙÀÌ³Ê¸® µ¥ÀÌÅÍ¸¦ ÅØ½ºÆ® µ¥ÀÌÅÍ·Î º¯È¯ÇÒ ¶§ »ç¿ëÇÑ´Ù.
-	A~Z, a~z, 0~9, +, / : ÃÑ 64°³·Î ±¸¼ºµÇ¾î ÀÖ´Ù.
+	ë°”ì´ë„ˆë¦¬ ë°ì´í„°ë¥¼ í…ìŠ¤íŠ¸ ë°ì´í„°ë¡œ ë³€í™˜í•  ë•Œ ì‚¬ìš©í•œë‹¤.
+	A~Z, a~z, 0~9, +, / : ì´ 64ê°œë¡œ êµ¬ì„±ë˜ì–´ ìˆë‹¤.
 	
-	2Áø¹ı		: base2
-	10Áø¹ı	: base10
-	16Áø¹ı	: base16
-	64Áø¹ı	: base64
+	2ì§„ë²•		: base2
+	10ì§„ë²•	: base10
+	16ì§„ë²•	: base16
+	64ì§„ë²•	: base64

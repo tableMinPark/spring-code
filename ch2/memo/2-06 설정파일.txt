@@ -1,9 +1,9 @@
-2-06 ¼³Á¤ÆÄÀÏ
+2-06 ì„¤ì •íŒŒì¼
 
-# TomcatÀÇ ¼³Á¤ÆÄÀÏ
+# Tomcatì˜ ì„¤ì •íŒŒì¼
 
-	ÅèÄ¹¼³Ä¡°æ·Î/conf/server.xml	: Tomcat ¼­¹ö ¼³Á¤ ÆÄÀÏ
-	ÅèÄ¹¼³Ä¡°æ·Î/conf/web.xml		: TomcatÀÇ ¸ðµç web appÀÇ °øÅë¼³Á¤
-	À¥¾ÛÀÌ¸§/WEB-INF/web.xml		: web appÀÇ °³º°¼³Á¤
+	í†°ìº£ì„¤ì¹˜ê²½ë¡œ/conf/server.xml	: Tomcat ì„œë²„ ì„¤ì • íŒŒì¼
+	í†°ìº£ì„¤ì¹˜ê²½ë¡œ/conf/web.xml		: Tomcatì˜ ëª¨ë“  web appì˜ ê³µí†µì„¤ì •
+	ì›¹ì•±ì´ë¦„/WEB-INF/web.xml		: web appì˜ ê°œë³„ì„¤ì •
 	
-	web.xml ¿¡ ¼­ºí¸´À» µî·ÏÇÏ°í URLÀ» ¿¬°áÀ» ÇßÁö¸¸, ÇöÀç¿¡´Â ¾î³ëÅ×ÀÌ¼ÇÀ» ÅëÇØ ¼­ºí¸´ µî·Ï, URL¸ÅÇÎÀ» ´ë½ÅÇÑ´Ù.
+	web.xml ì— ì„œë¸”ë¦¿ì„ ë“±ë¡í•˜ê³  URLì„ ì—°ê²°ì„ í–ˆì§€ë§Œ, í˜„ìž¬ì—ëŠ” ì–´ë…¸í…Œì´ì…˜ì„ í†µí•´ ì„œë¸”ë¦¿ ë“±ë¡, URLë§¤í•‘ì„ ëŒ€ì‹ í•œë‹¤.
