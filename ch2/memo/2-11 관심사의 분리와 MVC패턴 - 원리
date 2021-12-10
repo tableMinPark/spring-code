@@ -1,0 +1,8 @@
+2-11 관심사의 분리와 MVC패턴 - 원리
+
+# 1. 메소드의 정보
+
+	1. 매개변수의 이름 얻어오기
+		
+		* Reflection API 	: javac -parameters 옵션을 사용 (java8 & jdk1.8 이상)
+		* Class file		: class파일을 직접 읽어서 매개변수 이름을 가져옴
