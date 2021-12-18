@@ -1,0 +1,94 @@
+2-13 서블릿과 JSP (1)
+
+# 1. 서블릿과 컨트롤러의 비교
+				서블릿														컨트롤러
+	어노테이션	: @WebServlet 													@controller + @RequestMapping
+	상속		: extends HttpServlet											상속불필요
+	메서드	: service(메서드명) HttpServletRequest, HttpServletResponse(고정)	필요한거만 매개변수에 넣으면됨
+	
+# 2. 서블릿의 생명주기
+
+	Servlet Container가 자동호출하며 init(), service(), destory()를 채우기만 하면된다.
+	
+	init	: 서블릿 초기화 - 서블릿이 생성 또는 리로딩 때, 단 한번만 수행된다.
+	service	: 호출될 때마다 반복적으로 수행된다.
+	destroy	: 뒷정리 작업 - 서블릿이 제거(unload)될 때, 단 한번만 수행된다.
+	
+	서블릿은 기본적으로 싱글톤(Singleton)이기 때문에 1개의 인스턴스만 생성되고 계속 재활용한다.
+	사용자마다 똑같은 작업을 하기 때문에 여러개의 인스턴스를 생성할 필요가 없다.
+		
+	while(Unload될때까지){
+		요청();
+		if (서블릿 인스턴스가 존재하지 않는가?){
+			서블릿 클래스 로딩 & 인스턴스 생성();
+			init();
+		}
+		service();
+		응답();
+	}
+	destroy();
+	
+# 3. JSP (Java Server Pages)란?
+
+	JSP : HTML코드안에 Java코드가 있는 것
+	
+	[JSP 예시]
+	<%@ page contentType="text/html;charset=utf-8"%>
+	<%@ page import="java.util.Random" %>
+	<%-- <%! 클래스 영역 %> --%>
+	<%!  													<%! %> 는 클래스내 선언 (전역변수)
+		int getRandomInt(int range){
+			return new Random().nextInt(range)+1;
+		}
+	%>
+	<%-- <%  메서드 영역 - service()의 내부 %> --%>
+	<%														<% %> 는 service() 내에 선언 (메서드 안 지역변수)
+		int idx1 = getRandomInt(6);
+		int idx2 = getRandomInt(6);
+	%>
+	<html>
+	<head>
+		<title>twoDice.jsp</title>
+	</head>
+	<body>
+		<img src='resources/img/dice<%=idx1%>.jpg'>			<%=idx1%> : idx1이라는 변수의 값을 출력하기 위함
+		<img src='resources/img/dice<%=idx2%>.jpg'>
+	</body>
+	</html>
+	
+# 4. JSP의 호출과정
+
+	요청(twoDice.jsp);	
+	if (서블릿 인스턴스 존재하지 않는가?){			//JspServlet
+		twoDice_jsp.java(서블릿소스) 		= jsp에서 java로 변환(twoDice.jsp);
+		twoDice_jsp.class(서블릿클래스) 	= 컴파일(twoDice_jsp.java);
+		_jspInit();						//서블릿클래스를 통해 인스턴스 생성
+	}
+	_jspService();
+	응답();
+	
+	첫번째 호출이나 jsp파일이 변경되면 jsp를 java로 변환하고 컴파일하는 시간이 있기 때문에 지연이 발생한다.
+	두번째 호출부터는 객체를 만들지 않고 생성된 인스턴스를 호출하여 응답하기 때문에 첫번째 호출보다는 빠르다.
+	
+	서블릿	: lazy-init		(지연된초기화)	: 요청이 오면 객체를 만듬
+	Spring	: early-init	(미리초기화)	: 요청이 오지 않아도 미리 객체를 만들고 대기
+	
+	서블릿과 Spring은 같은 싱글톤 형식이지만 초기화에서 방식이 다르다.
+	
+# 5. JSP의 기본객체 : 생성없이 사용할 수 있는 객체
+
+	[예시]
+	<%@ page contentType="text/html;charset=utf-8"%>
+	<%@ page import="java.util.Random" %>
+	<%  													
+		String year = request.getParameter("year");		// 선언부가 없다.
+														// request, response, pageContext, session, application 등 여러 기본객체들이 존재한다.
+	%>
+	<html>
+	<head>
+		<title>example.jsp</title>
+	</head>
+	<body>
+		<h1><%=year%>년</h1>
+	</body>
+	</html>
