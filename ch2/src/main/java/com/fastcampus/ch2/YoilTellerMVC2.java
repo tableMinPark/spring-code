@@ -12,12 +12,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 // 기존의 YoilTeller의 관심사를 분리한다.
 
 @Controller
-public class YoilTellerMVC {	//http://localhost:8080/ch2/getYoil?year=2021&month=12&day=4
-		
-	@RequestMapping("/getYoilMVC")
+public class YoilTellerMVC2 {	//http://localhost:8080/ch2/getYoil?year=2021&month=12&day=4
+	
+	@ExceptionHandler(Exception.class)
+	public String catcher(Exception ex) {
+		ex.printStackTrace();
+		return "getYoilError";
+	}
+	
+	
+	@RequestMapping("/getYoilMVC2")
 //  HttpServletRequest를 사용하여 받아오지않고 개별적으로 year, month, day를 받을 수 있다.(String -> int 자동 형변환 된다.)
 //  JSP를 통해 출력하기 때문에 HttpServletResponse를 사용하지 않고 Model을 사용하여 값을 JSP로 전달한다.
-	public String main(int year, int month, int day, Model model) throws IOException {	
+	public String main(@RequestParam(required=true) int year, 
+			@RequestParam(required=true)int month, 
+			@RequestParam(required=true)int day, Model model) throws IOException {	
 		// 1. 유효성 검사
 		if (!isValid(year, month, day)) 
 			return "getYoilError";
