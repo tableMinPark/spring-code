@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <%@ page import="java.net.URLDecoder"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,10 +71,15 @@
     <title>Register</title>
 </head>
 <body>
-   <form action="<c:url value="/register/save"/>" method="POST" onsubmit="return formCheck(this)">
+   <!-- <form action="<c:url value="/register/save"/>" method="POST" onsubmit="return formCheck(this)"> -->
    <!-- c:url : contextRoot를 자동으로 추가해주고, session id를 자동추가해준다. -->
+   
+   <form:form modelAttribute="user">
     <div class="title">Register</div>
-    <div id="msg" class="msg"> ${URLDecoder.decode(param.msg, "utf-8")} </div> 
+    
+    <!-- <div id="msg" class="msg"> ${URLDecoder.decode(param.msg, "utf-8")} </div>  -->
+    <div id="msg" class="msg"><form:errors path="id"/></div>
+    
     <label for="">아이디</label>
     <input class="input-field" type="text" name="id" placeholder="8~12자리의 영대소문자와 숫자 조합" autofocus>
     <label for="">비밀번호</label>
@@ -91,7 +98,9 @@
         <label><input type="checkbox" name="sns" value="instagram"/>인스타그램</label>
     </div>
     <button>회원 가입</button>
-   </form> 
+   </form:form>
+    
+   <!-- </form> --> 
    <script>
        function formCheck(frm) {
             var msg ='';
@@ -101,10 +110,10 @@
                 return false;
             }
             
-            if(frm.pwd.value.length<3) {
-                setMessage('pwd의 길이는 3이상이어야 합니다.', frm.id);
-                return false;
-            }
+            //if(frm.pwd.value.length<3) {
+            //    setMessage('pwd의 길이는 3이상이어야 합니다.', frm.id);
+            //    return false;
+            //}
 
 
            return true;
