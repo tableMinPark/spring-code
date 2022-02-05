@@ -17,10 +17,10 @@ public class Main1 {
     }
 
     static Object getObject(String key) throws Exception{
-        Properties p = new Properties();
-        p.load(new FileReader("config.txt"));
+        Properties p = new Properties();                    // key - value 형태로 저장되어있는 파일을 읽어오기 편함.
+        p.load(new FileReader("config.txt"));       // config.txt (key=value 형태)
 
-        Class clazz = Class.forName(p.getProperty(key));
+        Class clazz = Class.forName(p.getProperty(key));    // getProperty(key) : value
 
         return clazz.newInstance();
     }
