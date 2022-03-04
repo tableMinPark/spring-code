@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 import static org.junit.Assert.*;
@@ -80,6 +81,37 @@ import static org.junit.Assert.*;
             user = new User("asdf", "4321", "박상민", "abc@abc.com", new Date(), "fb", new Date());
             rowCnt = updateUser(user);
             assertTrue(rowCnt == 1);
+        }
+
+        @Test
+        public void transactionTest() throws Exception {
+            Connection conn = null;
+            try {
+                deleteAll();
+                conn = ds.getConnection();
+                conn.setAutoCommit(false);      // AutoCommit OFF
+
+                String sql = "insert into user_info values (?, ?, ?, ?, ?, ?, now()) ";
+
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, "asdf");
+                pstmt.setString(2, "1234");
+                pstmt.setString(3, "abc");
+                pstmt.setString(4, "aaa@aaa.com");
+                pstmt.setDate(5, new java.sql.Date(new Date().getTime()));
+                pstmt.setString(6, "fb");
+
+                int rowCnt = pstmt.executeUpdate();
+
+                pstmt.setString(1, "asdf");         // 같은 ID가 들어가기 때문에 예외가 발생
+                rowCnt = pstmt.executeUpdate();
+
+                conn.commit();
+            } catch (Exception e) {
+                conn.rollback();            // 문제가 생기면 ROLLBACK
+                e.printStackTrace();
+            } finally {
+            }
         }
 
         // 사용자 정보를 user_info 테이블에 저장하는 메서드
