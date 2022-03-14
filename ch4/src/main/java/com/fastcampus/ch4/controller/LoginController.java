@@ -79,7 +79,6 @@ public class LoginController {
             e.printStackTrace();
             return false;
         }
-
         return user!=null && user.getPwd().equals(pwd);
 //        return "asdf".equals(id) && "1234".equals(pwd);
     }

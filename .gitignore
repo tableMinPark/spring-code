@@ -3,3 +3,4 @@ Servers/
 .metadata/
 */target
 */.settings
+*.iml
