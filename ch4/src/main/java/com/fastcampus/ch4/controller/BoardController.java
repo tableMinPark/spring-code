@@ -140,6 +140,6 @@ public class BoardController {
 
     private boolean loginCheck(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        return session.getAttribute("id")!=null;
+        return session.getAttribute("id") != null;
     }
 }

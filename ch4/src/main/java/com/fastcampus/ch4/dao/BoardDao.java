@@ -14,4 +14,6 @@ public interface BoardDao {
     List<BoardDto> selectPage(Map map) throws Exception;
     int update(BoardDto dto) throws Exception;
     int increaseViewCnt(Integer bno) throws Exception;
+    int searchResultCnt(SearchCondition sc) throws Exception;
+    List<BoardDto> searchSelectPage(SearchCondition sc) throws Exception;
 }

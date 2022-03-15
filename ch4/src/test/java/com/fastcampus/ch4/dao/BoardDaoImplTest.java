@@ -213,4 +213,36 @@ public class BoardDaoImplTest {
         assertTrue(boardDto!=null);
         assertTrue(boardDto.getView_cnt() == 2);
     }
+
+    @Test
+    public void searchSelectPageTest() throws Exception {
+        boardDao.deleteAll();
+
+        for (int i = 1; i <= 20; i++){
+            BoardDto boardDto = new BoardDto("title" + i, "content" + i, "admin");
+            boardDao.insert(boardDto);
+        }
+
+        SearchCondition sc = new SearchCondition(1, 10, "title2", "T");     // = title2% : title2로 시작하는 모든 컬럼 조회
+        List<BoardDto> list = boardDao.searchSelectPage(sc);
+        System.out.println("list = " + list);
+
+        assertTrue(list.size() == 2);       // title2, title 20
+    }
+
+    @Test
+    public void searchResultCntTest() throws Exception {
+        boardDao.deleteAll();
+
+        for (int i = 1; i <= 20; i++){
+            BoardDto boardDto = new BoardDto("title" + i, "content" + i, "admin");
+            boardDao.insert(boardDto);
+        }
+
+        SearchCondition sc = new SearchCondition(1, 10, "title2", "T");     // = title2% : title2로 시작하는 모든 컬럼 조회
+        int cnt = boardDao.searchResultCnt(sc);
+        System.out.println("cnt = " + cnt);
+
+        assertTrue(cnt == 2);       // title2, title 20
+    }
 }

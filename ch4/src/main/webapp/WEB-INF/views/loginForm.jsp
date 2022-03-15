@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page session="false"%>
 <c:set var="loginId" value="${pageContext.request.getSession(false)==null ? '' : pageContext.request.session.getAttribute('id')}"/>
-<c:set var="loginOutLink" value="${loginId=='' ? '/login/login' : '/login/logout'}"/>
-<c:set var="loginOut" value="${loginId=='' ? 'Login' : 'Logout'}"/>
+<c:set var="loginOutLink" value="${fn:trim(loginId)=='' ? '/login/login' : '/login/logout'}"/>
+<c:set var="loginOut" value="${fn:trim(loginId)=='' ? 'Login' : 'Logout'}"/>
 <!DOCTYPE html>
 <html>
 <head>
